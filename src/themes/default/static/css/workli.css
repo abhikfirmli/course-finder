@@ -1,0 +1,19 @@
+.workli-header-tab {
+  font-size: 14px !important;
+  font-weight: 400 !important;
+}
+
+.workli-header-tab:hover {
+  background-color: rgba(255, 255, 255, 0.13) !important;
+}
+
+.workli-header-tab:where([data-active]) {
+  background-color: rgba(255, 255, 255, 0.13) !important;
+  color: #fff !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+}
+
+.workli-header-tab-list::before {
+  border-color: var(--header-background) !important;
+}

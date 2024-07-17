@@ -1,0 +1,30 @@
+ul {
+  list-style-type: none;
+}
+
+.splide__slide img {
+  width: 80px;
+  height: 100%;
+  border-radius: 6px;
+  object-fit: cover;
+}
+
+.splide__arrows--ttb .splide__arrow--prev {
+  top: -2em;
+}
+
+.splide__arrows--ttb .splide__arrow--next {
+  bottom: -2em;
+}
+
+.ant-btn {
+  color: #000 !important;
+}
+
+.ant-segmented-item-selected {
+  background-color: #f7e207 !important;
+}
+
+.ant-segmented-item-selected > .count-badge {
+  background-color: red !important;
+}
