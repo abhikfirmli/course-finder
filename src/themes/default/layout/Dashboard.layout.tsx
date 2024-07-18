@@ -106,15 +106,58 @@ export default function DashboardLayout({
                   </HoverCard.Target>
                   <HoverCard.Dropdown>
                     <Stack>
-                      <UnstyledButton>Canada</UnstyledButton>
-                      <UnstyledButton>New Zealand</UnstyledButton>
-                      <UnstyledButton>Australia</UnstyledButton>
-                      <UnstyledButton>Germany</UnstyledButton>
-                      <UnstyledButton>USA</UnstyledButton>
+                      <UnstyledButton
+                        onClick={() =>
+                          (window.location.href =
+                            "https://learnoverseas.com/destinations/canada/")
+                        }
+                      >
+                        Canada
+                      </UnstyledButton>
+                      <UnstyledButton
+                        onClick={() =>
+                          (window.location.href =
+                            "https://learnoverseas.com/destinations/new-zealand/")
+                        }
+                      >
+                        New Zealand
+                      </UnstyledButton>
+                      <UnstyledButton
+                        onClick={() =>
+                          (window.location.href =
+                            "https://learnoverseas.com/destinations/australia/")
+                        }
+                      >
+                        Australia
+                      </UnstyledButton>
+                      <UnstyledButton
+                        onClick={() =>
+                          (window.location.href =
+                            "https://learnoverseas.com/destinations/germany/")
+                        }
+                      >
+                        Germany
+                      </UnstyledButton>
+                      <UnstyledButton
+                        onClick={() =>
+                          (window.location.href =
+                            "https://learnoverseas.com/destinations/usa/")
+                        }
+                      >
+                        USA
+                      </UnstyledButton>
+                      <UnstyledButton
+                        onClick={() =>
+                          (window.location.href =
+                            "https://learnoverseas.com/destinations/uk/")
+                        }
+                      >
+                        UK
+                      </UnstyledButton>
                     </Stack>
                   </HoverCard.Dropdown>
                 </HoverCard>
-                <Button
+                {/* <Button
                   size="compact-xs"
                   variant="transparent"
                   color="#000"
@@ -131,6 +174,19 @@ export default function DashboardLayout({
                   fz={14}
                 >
                   Blog
+                </Button> */}
+                <Button
+                  size="compact-xs"
+                  variant="transparent"
+                  color="#000"
+                  fw={500}
+                  fz={14}
+                  onClick={() =>
+                    (window.location.href =
+                      "https://learnoverseas.com/about-us/")
+                  }
+                >
+                  About Us
                 </Button>
                 <Button
                   size="compact-xs"
@@ -138,8 +194,12 @@ export default function DashboardLayout({
                   color="#000"
                   fw={500}
                   fz={14}
+                  onClick={() =>
+                    (window.location.href =
+                      "https://learnoverseas.com/contact-us/")
+                  }
                 >
-                  About Us
+                  Contact Us
                 </Button>
               </Group>
             </Group>
@@ -154,6 +214,7 @@ export default function DashboardLayout({
               color="#000"
               fw={500}
               fz={14}
+              onClick={() => (window.location.href = "/")}
             >
               Home
             </Button>
@@ -178,15 +239,58 @@ export default function DashboardLayout({
               </HoverCard.Target>
               <HoverCard.Dropdown>
                 <Stack>
-                  <UnstyledButton>Canada</UnstyledButton>
-                  <UnstyledButton>New Zealand</UnstyledButton>
-                  <UnstyledButton>Australia</UnstyledButton>
-                  <UnstyledButton>Germany</UnstyledButton>
-                  <UnstyledButton>USA</UnstyledButton>
+                  <UnstyledButton
+                    onClick={() =>
+                      (window.location.href =
+                        "https://learnoverseas.com/destinations/canada/")
+                    }
+                  >
+                    Canada
+                  </UnstyledButton>
+                  <UnstyledButton
+                    onClick={() =>
+                      (window.location.href =
+                        "https://learnoverseas.com/destinations/new-zealand/")
+                    }
+                  >
+                    New Zealand
+                  </UnstyledButton>
+                  <UnstyledButton
+                    onClick={() =>
+                      (window.location.href =
+                        "https://learnoverseas.com/destinations/australia/")
+                    }
+                  >
+                    Australia
+                  </UnstyledButton>
+                  <UnstyledButton
+                    onClick={() =>
+                      (window.location.href =
+                        "https://learnoverseas.com/destinations/germany/")
+                    }
+                  >
+                    Germany
+                  </UnstyledButton>
+                  <UnstyledButton
+                    onClick={() =>
+                      (window.location.href =
+                        "https://learnoverseas.com/destinations/usa/")
+                    }
+                  >
+                    USA
+                  </UnstyledButton>
+                  <UnstyledButton
+                    onClick={() =>
+                      (window.location.href =
+                        "https://learnoverseas.com/destinations/uk/")
+                    }
+                  >
+                    UK
+                  </UnstyledButton>
                 </Stack>
               </HoverCard.Dropdown>
             </HoverCard>
-            <Button
+            {/* <Button
               size="compact-xs"
               variant="transparent"
               color="#000"
@@ -203,6 +307,18 @@ export default function DashboardLayout({
               fz={14}
             >
               Blog
+            </Button> */}
+            <Button
+              size="compact-xs"
+              variant="transparent"
+              color="#000"
+              fw={500}
+              fz={14}
+              onClick={() =>
+                (window.location.href = "https://learnoverseas.com/about-us/")
+              }
+            >
+              About Us
             </Button>
             <Button
               size="compact-xs"
@@ -210,8 +326,11 @@ export default function DashboardLayout({
               color="#000"
               fw={500}
               fz={14}
+              onClick={() =>
+                (window.location.href = "https://learnoverseas.com/contact-us/")
+              }
             >
-              About Us
+              Contact Us
             </Button>
           </Stack>
         </AppShell.Navbar>

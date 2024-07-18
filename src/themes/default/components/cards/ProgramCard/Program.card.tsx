@@ -235,7 +235,7 @@ export function ProgramCard({ program, isImg }: { program: any; isImg: any }) {
                   Tuition Fee
                 </Title>
                 <Text fz={14} fw={500} lh="14.1px">
-                  AUD $24500
+                  ${program?.tuition_fee}
                 </Text>
               </Stack>
             </Group>
@@ -246,7 +246,7 @@ export function ProgramCard({ program, isImg }: { program: any; isImg: any }) {
                   Application Fee
                 </Title>
                 <Text fz={14} fw={500} lh="14.1px">
-                  AUD $0
+                  ${program?.application_fee}
                 </Text>
               </Stack>
             </Group>
@@ -276,10 +276,16 @@ export function ProgramCard({ program, isImg }: { program: any; isImg: any }) {
                           .slice(0, 2)
                           .map(
                             (item: any) =>
-                              item.scoreName + " " + "(" + item.score + ")"
+                              item?.score_name +
+                              " " +
+                              "(" +
+                              item?.program_testscore?.score +
+                              ")"
                           )
                           .join(", ")}{" "}
-                      <ChevronDownIcon />
+                      {program && program?.program?.testscores.length > 2 && (
+                        <ChevronDownIcon />
+                      )}
                     </UnstyledButton>
                   </Popover.Target>
                   <Popover.Dropdown
@@ -287,13 +293,17 @@ export function ProgramCard({ program, isImg }: { program: any; isImg: any }) {
                   >
                     <Stack justify="center" align="stretch">
                       <Text fz={13}>
-                        {program?.etsDetails &&
-                          program?.etsDetails.length > 0 &&
-                          program?.etsDetails
+                        {program?.program?.testscores &&
+                          program?.program?.testscores.length > 0 &&
+                          program?.program?.testscores
                             .slice(2)
                             .map(
                               (item: any) =>
-                                item.scoreName + " " + "(" + item.score + ")"
+                                item?.score_name +
+                                " " +
+                                "(" +
+                                item?.program_testscore?.score +
+                                ")"
                             )
                             .join(", ")}
                       </Text>
@@ -316,13 +326,13 @@ export function ProgramCard({ program, isImg }: { program: any; isImg: any }) {
                   >
                     <Then>
                       <Badge fz={12} fw={500} variant={"light"}>
-                        {program?.openIntake &&
-                          program?.openIntake.length > 0 &&
-                          program?.openIntake.map((intake: any) => {
+                        {program?.program?.intakes &&
+                          program?.program?.intakes.length > 0 &&
+                          program?.program?.intakes.map((intake: any) => {
                             return (
-                              intake?.intakeName +
+                              intake?.intake_name +
                               "," +
-                              intake?.intakeYear +
+                              intake?.intake_year +
                               " " +
                               "(" +
                               intake?.status +

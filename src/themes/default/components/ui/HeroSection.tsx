@@ -39,10 +39,14 @@ export default function HeroSection() {
                   color: "black",
                   border: "#fce205",
                 }}
+                onClick={() =>
+                  (window.location.href =
+                    "https://frm.li/t/LK1721295569300E24XUCZJ19")
+                }
               >
                 Start Your Journey Now
               </Button>
-              <Button
+              {/* <Button
                 w={200}
                 h={50}
                 radius={30}
@@ -54,7 +58,7 @@ export default function HeroSection() {
               >
                 <IconPhone />
                 Talk to Experts
-              </Button>
+              </Button> */}
             </Group>
           </Grid.Col>
           <Grid.Col

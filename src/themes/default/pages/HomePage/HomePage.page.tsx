@@ -186,7 +186,7 @@ export default function HomePage() {
         ...get_search_params(searchParams),
         sortProgramBy: alphabet,
       });
-      setSortProgram(alphabet);
+      await setSortProgram(alphabet);
       refetchPrograms();
     }
   };
