@@ -34,10 +34,11 @@ import { useDisclosure } from "@mantine/hooks";
 import { DateInput } from "@mantine/dates";
 import { Else, If, Then } from "react-if";
 import { useForm } from "@mantine/form";
+import { Link, useNavigate } from "react-router-dom";
 
 export function ProgramCard({ program, isImg }: { program: any; isImg: any }) {
   const applyForm = useForm();
-
+  const navigate = useNavigate();
   const [
     isChecklistModalOpened,
     { open: openChecklistModal, close: closeChecklistModal },
@@ -143,8 +144,16 @@ export function ProgramCard({ program, isImg }: { program: any; isImg: any }) {
                     <Text fz={13} c="#363636">
                       Select Campus
                     </Text>
-                    <UnstyledButton onClick={openApplyModal}>
-                      {program?.campus?.name}
+                    <UnstyledButton
+                    // onClick={openApplyModal}
+                    >
+                      <Link
+                        to={`https://frm.li/t/LK1721295569300E24XUCZJ19?program_id=${program?.program?.identifier}&institution_id=${program?.program?.institution?.identifier}&destination_id=${program?.program?.institution?.country?.identifier}`}
+                        target="_blank"
+                        style={{ textDecoration: "none", color: "#363636" }}
+                      >
+                        {program?.campus?.name}
+                      </Link>
                     </UnstyledButton>
                   </Stack>
                 </Popover.Dropdown>

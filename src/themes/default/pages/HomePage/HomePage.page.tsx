@@ -12,6 +12,7 @@ import {
   Image,
   Input,
   Loader,
+  MultiSelect,
   Pagination,
   RangeSlider,
   ScrollArea,
@@ -131,31 +132,31 @@ export default function HomePage() {
         alphabet: searchParams.get("sortProgramBy"),
       }),
       ...(searchParams.has("programSearch") && {
-        programSearch: searchParams.get("programSearch"),
+        search: searchParams.get("programSearch"),
       }),
       ...(searchParams.has("programFilter") &&
         JSON.parse(searchParams.get("programFilter") as any)),
     },
   });
 
-  const {
-    data: institutions,
-    isLoading: isInstitutionsLoading,
-    refetch: refetchInstitutions,
-  } = useGetInstitutions({
-    page: currentInstitutionPage as any,
-    per_page: 10,
-    params: {
-      ...(searchParams.has("sortInstitutionBy") && {
-        alphabet: searchParams.get("sortInstitutionBy"),
-      }),
-      ...(searchParams.has("institutionSearch") && {
-        alphabet: searchParams.get("institutionSearch"),
-      }),
-      ...(searchParams.has("institutionFilter") &&
-        JSON.parse(searchParams.get("institutionFilter") as any)),
-    },
-  });
+  // const {
+  //   data: institutions,
+  //   isLoading: isInstitutionsLoading,
+  //   refetch: refetchInstitutions,
+  // } = useGetInstitutions({
+  //   page: currentInstitutionPage as any,
+  //   per_page: 10,
+  //   params: {
+  //     ...(searchParams.has("sortInstitutionBy") && {
+  //       alphabet: searchParams.get("sortInstitutionBy"),
+  //     }),
+  //     ...(searchParams.has("institutionSearch") && {
+  //       alphabet: searchParams.get("institutionSearch"),
+  //     }),
+  //     ...(searchParams.has("institutionFilter") &&
+  //       JSON.parse(searchParams.get("institutionFilter") as any)),
+  //   },
+  // });
 
   const handleProgramPagination = (val: any) => {
     setCurrentProgramPage(val);
@@ -174,12 +175,12 @@ export default function HomePage() {
 
   const handleAlphabetChange = async (name: string, alphabet: any) => {
     if (name === "institutions") {
-      await setSearchParams({
-        ...get_search_params(searchParams),
-        sortInstitutionBy: alphabet,
-      });
-      setSortInstitution(alphabet);
-      refetchInstitutions();
+      // await setSearchParams({
+      //   ...get_search_params(searchParams),
+      //   sortInstitutionBy: alphabet,
+      // });
+      // setSortInstitution(alphabet);
+      // refetchInstitutions();
     } else {
       await setSearchParams({
         ...get_search_params(searchParams),
@@ -210,17 +211,17 @@ export default function HomePage() {
     setInstitutionSearch(value);
   };
 
-  const handleInstitutionSearchSubmit = () => {
-    refetchInstitutions();
-  };
+  // const handleInstitutionSearchSubmit = () => {
+  //   refetchInstitutions();
+  // };
 
-  const handleInsitutionFormSubmit = async (values: any) => {
-    await setSearchParams({
-      ...get_search_params(searchParams),
-      institutionFilter: JSON.stringify(values),
-    });
-    refetchInstitutions();
-  };
+  // const handleInsitutionFormSubmit = async (values: any) => {
+  //   await setSearchParams({
+  //     ...get_search_params(searchParams),
+  //     institutionFilter: JSON.stringify(values),
+  //   });
+  //   refetchInstitutions();
+  // };
 
   const handleProgramFormSubmit = async (values: any) => {
     await setSearchParams({
@@ -230,13 +231,13 @@ export default function HomePage() {
     refetchPrograms();
   };
 
-  const handleResetInstitutionFilter = async () => {
-    await setSearchParams({
-      ...get_search_params(searchParams),
-      institutionFilter: JSON.stringify(""),
-    });
-    refetchInstitutions();
-  };
+  // const handleResetInstitutionFilter = async () => {
+  //   await setSearchParams({
+  //     ...get_search_params(searchParams),
+  //     institutionFilter: JSON.stringify(""),
+  //   });
+  //   refetchInstitutions();
+  // };
 
   const handleResetProgramFilter = async () => {
     try {
@@ -285,7 +286,7 @@ export default function HomePage() {
             zIndex: 2,
           }}
         >
-          <Tabs.List grow>
+          {/* <Tabs.List grow>
             <Tabs.Tab value="programs">
               Programs
               <Badge
@@ -318,11 +319,11 @@ export default function HomePage() {
                 </If>
               </Badge>
             </Tabs.Tab>
-          </Tabs.List>
+          </Tabs.List> */}
 
           <If condition={pageTab === "institutions"}>
             <Then>
-              <Stack style={{ position: "relative" }}>
+              {/* <Stack style={{ position: "relative" }}>
                 <Group mt={15} w="100%" className="institution-search">
                   <Input
                     flex={1}
@@ -430,12 +431,6 @@ export default function HomePage() {
                               data={collegeCountries ?? []}
                               searchable
                             />
-                            {/* <Select
-                          label="State"
-                          placeholder="Please select State"
-                          data={['React', 'Angular', 'Vue', 'Svelte']}
-                          searchable
-                        /> */}
                             <Select
                               label="Institution Type"
                               placeholder="Please select Institution Type"
@@ -592,8 +587,8 @@ export default function HomePage() {
                                   />
                                 </Input.Wrapper>
                               </Group>
-                            )}
-                            {/* <Text size="sm" mt="sm">
+                            )} */}
+              {/* <Text size="sm" mt="sm">
                               Tuition Fee
                             </Text>
                             <RangeSlider
@@ -649,7 +644,7 @@ export default function HomePage() {
                               )}
                             /> */}
 
-                            <Group>
+              {/* <Group>
                               <Button
                                 flex={1}
                                 mt={30}
@@ -733,12 +728,6 @@ export default function HomePage() {
                             data={collegeCountries ?? []}
                             searchable
                           />
-                          {/* <Select
-                          label="State"
-                          placeholder="Please select State"
-                          data={['React', 'Angular', 'Vue', 'Svelte']}
-                          searchable
-                        /> */}
                           <Select
                             label="Institution Type"
                             placeholder="Please select Institution Type"
@@ -889,8 +878,8 @@ export default function HomePage() {
                                 />
                               </Input.Wrapper>
                             </Group>
-                          )}
-                          {/* <Text size="sm" mt="sm">
+                          )} */}
+              {/* <Text size="sm" mt="sm">
                             Tuition Fee
                           </Text>
                           <RangeSlider
@@ -946,7 +935,7 @@ export default function HomePage() {
                             )}
                           /> */}
 
-                          <Group>
+              {/* <Group>
                             <Button
                               flex={1}
                               mt={30}
@@ -979,7 +968,7 @@ export default function HomePage() {
                 >
                   <IconFilter stroke={2} size={20} />
                 </Button>
-              </Stack>
+              </Stack> */}
             </Then>
             <Else>
               <Stack style={{ position: "relative" }}>
@@ -1077,11 +1066,11 @@ export default function HomePage() {
                           )}
                         >
                           <Stack>
-                            <Select
+                            <MultiSelect
                               label="Country"
                               placeholder="Please select Country"
-                              key={programFilterForm.key("countryId")}
-                              {...programFilterForm.getInputProps("countryId")}
+                              key={programFilterForm.key("country_id")}
+                              {...programFilterForm.getInputProps("country_id")}
                               data={collegeCountries ?? []}
                               searchable
                             />
@@ -1091,7 +1080,7 @@ export default function HomePage() {
                           data={['React', 'Angular', 'Vue', 'Svelte']}
                           searchable
                         /> */}
-                            <Select
+                            {/* <Select
                               label="Institution Type"
                               placeholder="Please select Institution Type"
                               data={[
@@ -1100,48 +1089,46 @@ export default function HomePage() {
                                 "High School",
                                 "English School",
                               ]}
-                              key={programFilterForm.key("institutionType")}
+                              key={programFilterForm.key("institution_type")}
                               {...programFilterForm.getInputProps(
-                                "institutionType"
+                                "institution_type"
                               )}
                               searchable
-                            />
-                            <Select
+                            /> */}
+                            <MultiSelect
                               label="Institution"
                               placeholder="Please select Institution"
                               data={institutionDropdown ?? []}
-                              key={programFilterForm.key("institutionId")}
+                              key={programFilterForm.key("institution_id")}
                               {...programFilterForm.getInputProps(
-                                "institutionId"
+                                "institution_id"
                               )}
                               searchable
                             />
                             <Select
                               label="Is PGWP Available?"
                               placeholder="Please select PGWP"
-                              data={["Yes", "No"]}
-                              key={programFilterForm.key("is_pgwp_available")}
-                              {...programFilterForm.getInputProps(
-                                "is_pgwp_available"
-                              )}
+                              data={["yes", "no"]}
+                              key={programFilterForm.key("is_pgwp")}
+                              {...programFilterForm.getInputProps("is_pgwp")}
                               searchable
                             />
-                            <Select
+                            <MultiSelect
                               label="Study Level"
                               placeholder="Please select Study Level"
-                              key={programFilterForm.key("studyLevelId")}
+                              key={programFilterForm.key("study_level_id")}
                               {...programFilterForm.getInputProps(
-                                "studyLevelId"
+                                "study_level_id"
                               )}
                               data={studyLevels ?? []}
                               searchable
                             />
-                            <Select
+                            <MultiSelect
                               label="Looking for"
                               placeholder="Please select Looking for"
-                              key={programFilterForm.key("disciplineId")}
+                              key={programFilterForm.key("discipline_id")}
                               {...programFilterForm.getInputProps(
-                                "disciplineId"
+                                "discipline_id"
                               )}
                               data={disciplines ?? []}
                               searchable
@@ -1149,30 +1136,39 @@ export default function HomePage() {
                             <Select
                               label="Attendance"
                               placeholder="Please select Attendance"
-                              data={["On Campus", "Online", "Blended"]}
-                              key={programFilterForm.key("attendance")}
-                              {...programFilterForm.getInputProps("attendance")}
+                              data={[
+                                { label: "On Campus", value: "on_campus" },
+                                { label: "Online", value: "online" },
+                                { label: "Blended", value: "blended" },
+                              ]}
+                              key={programFilterForm.key("attendance_on")}
+                              {...programFilterForm.getInputProps(
+                                "attendance_on"
+                              )}
                               searchable
                             />
                             <Select
                               label="Program Type"
                               placeholder="Please select Program Type"
-                              data={["Full Time", "Part Time"]}
-                              key={programFilterForm.key("programType")}
+                              data={[
+                                { label: "Full Time", value: "full_time" },
+                                { label: "Part Time", value: "part_time" },
+                              ]}
+                              key={programFilterForm.key("program_type")}
                               {...programFilterForm.getInputProps(
-                                "programType"
+                                "program_type"
                               )}
                               searchable
                             />
-                            <Select
+                            <MultiSelect
                               label="Intake"
                               placeholder="Please select Intake"
                               data={intakes ?? []}
-                              key={programFilterForm.key("intakeId")}
-                              {...programFilterForm.getInputProps("intakeId")}
+                              key={programFilterForm.key("intake_id")}
+                              {...programFilterForm.getInputProps("intake_id")}
                               searchable
                             />
-                            <Select
+                            {/* <Select
                               label="Duration"
                               placeholder="Please select Duration"
                               data={[
@@ -1201,8 +1197,8 @@ export default function HomePage() {
                               )}
                               onChange={handleProgramMinFields}
                               searchable
-                            />
-                            {isProgramEts && (
+                            /> */}
+                            {/* {isProgramEts && (
                               <Group>
                                 <Input.Wrapper
                                   label="Min Test Score"
@@ -1235,7 +1231,7 @@ export default function HomePage() {
                                   />
                                 </Input.Wrapper>
                               </Group>
-                            )}
+                            )} */}
                             {/* <Text size="sm" mt="sm">
                               Tuition Fee
                             </Text>
@@ -1362,11 +1358,11 @@ export default function HomePage() {
                         )}
                       >
                         <Stack>
-                          <Select
+                          <MultiSelect
                             label="Country"
                             placeholder="Please select Country"
-                            key={programFilterForm.key("countryId")}
-                            {...programFilterForm.getInputProps("countryId")}
+                            key={programFilterForm.key("country_id")}
+                            {...programFilterForm.getInputProps("country_id")}
                             data={collegeCountries ?? []}
                             searchable
                           />
@@ -1376,7 +1372,7 @@ export default function HomePage() {
                           data={['React', 'Angular', 'Vue', 'Svelte']}
                           searchable
                         /> */}
-                          <Select
+                          {/* <Select
                             label="Institution Type"
                             placeholder="Please select Institution Type"
                             data={[
@@ -1390,68 +1386,79 @@ export default function HomePage() {
                               "institutionType"
                             )}
                             searchable
-                          />
-                          <Select
+                          /> */}
+                          <MultiSelect
                             label="Institution"
                             placeholder="Please select Institution"
                             data={institutionDropdown ?? []}
-                            key={programFilterForm.key("institutionId")}
+                            key={programFilterForm.key("institution_id")}
                             {...programFilterForm.getInputProps(
-                              "institutionId"
+                              "institution_id"
                             )}
                             searchable
                           />
                           <Select
                             label="Is PGWP Available?"
                             placeholder="Please select PGWP"
-                            data={["Yes", "No"]}
-                            key={programFilterForm.key("is_pgwp_available")}
-                            {...programFilterForm.getInputProps(
-                              "is_pgwp_available"
-                            )}
+                            data={["yes", "no"]}
+                            key={programFilterForm.key("is_pgwp")}
+                            {...programFilterForm.getInputProps("is_pgwp")}
                             searchable
                           />
-                          <Select
+                          <MultiSelect
                             label="Study Level"
                             placeholder="Please select Study Level"
-                            key={programFilterForm.key("studyLevelId")}
-                            {...programFilterForm.getInputProps("studyLevelId")}
+                            key={programFilterForm.key("study_level_id")}
+                            {...programFilterForm.getInputProps(
+                              "study_level_id"
+                            )}
                             data={studyLevels ?? []}
                             searchable
                           />
-                          <Select
+                          <MultiSelect
                             label="Looking for"
                             placeholder="Please select Looking for"
-                            key={programFilterForm.key("disciplineId")}
-                            {...programFilterForm.getInputProps("disciplineId")}
+                            key={programFilterForm.key("discipline_id")}
+                            {...programFilterForm.getInputProps(
+                              "discipline_id"
+                            )}
                             data={disciplines ?? []}
                             searchable
                           />
                           <Select
                             label="Attendance"
                             placeholder="Please select Attendance"
-                            data={["On Campus", "Online", "Blended"]}
-                            key={programFilterForm.key("attendance")}
-                            {...programFilterForm.getInputProps("attendance")}
+                            data={[
+                              { label: "On Campus", value: "on_campus" },
+                              { label: "Online", value: "online" },
+                              { label: "Blended", value: "blended" },
+                            ]}
+                            key={programFilterForm.key("attendance_on")}
+                            {...programFilterForm.getInputProps(
+                              "attendance_on"
+                            )}
                             searchable
                           />
                           <Select
                             label="Program Type"
                             placeholder="Please select Program Type"
-                            data={["Full Time", "Part Time"]}
-                            key={programFilterForm.key("programType")}
-                            {...programFilterForm.getInputProps("programType")}
+                            data={[
+                              { label: "Full Time", value: "full_time" },
+                              { label: "Part Time", value: "part_time" },
+                            ]}
+                            key={programFilterForm.key("program_type")}
+                            {...programFilterForm.getInputProps("program_type")}
                             searchable
                           />
-                          <Select
+                          <MultiSelect
                             label="Intake"
                             placeholder="Please select Intake"
                             data={intakes ?? []}
-                            key={programFilterForm.key("intakeId")}
-                            {...programFilterForm.getInputProps("intakeId")}
+                            key={programFilterForm.key("intake_id")}
+                            {...programFilterForm.getInputProps("intake_id")}
                             searchable
                           />
-                          <Select
+                          {/* <Select
                             label="Duration"
                             placeholder="Please select Duration"
                             data={[
@@ -1480,8 +1487,8 @@ export default function HomePage() {
                             )}
                             onChange={handleProgramMinFields}
                             searchable
-                          />
-                          {isProgramEts && (
+                          /> */}
+                          {/* {isProgramEts && (
                             <Group>
                               <Input.Wrapper
                                 label="Min Test Score"
@@ -1514,7 +1521,7 @@ export default function HomePage() {
                                 />
                               </Input.Wrapper>
                             </Group>
-                          )}
+                          )} */}
                           {/* <Text size="sm" mt="sm">
                             Tuition Fee
                           </Text>
